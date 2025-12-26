@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Priority Focus Manager API running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
 });

@@ -24,13 +24,24 @@ const pool = new Pool({
 });
 
 pool.on('error', (err) => {
-  console.error('Unexpected error on idle client', err);
-  process.exit(-1);
+  console.error('⚠️  Unexpected error on idle database client:', err.message);
+  // Don't crash the entire app on idle client errors
+  // The pool will attempt to reconnect automatically
 });
 
 // Log connection info (without exposing credentials)
 const dbUrl = process.env.DATABASE_URL || 'Not configured';
 const dbHost = dbUrl.includes('@') ? dbUrl.split('@')[1].split('/')[0] : 'localhost';
 console.log(`📊 Database: ${dbHost} ${isProduction ? '(SSL enabled)' : '(SSL disabled)'}`);
+
+// Test database connection on startup
+pool.query('SELECT NOW()')
+  .then(() => {
+    console.log('✅ Database connection successful');
+  })
+  .catch((err) => {
+    console.error('❌ Database connection failed:', err.message);
+    console.error('   Check your DATABASE_URL and ensure NODE_ENV=production is set');
+  });
 
 export default pool;
