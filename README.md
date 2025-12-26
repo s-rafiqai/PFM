@@ -150,6 +150,8 @@ When you have 8+ team members, you'll see a message reminding you that the const
 ```
 PFM/
 ├── backend/
+│   ├── database/
+│   │   └── migrations/      # SQL migrations
 │   ├── src/
 │   │   ├── config/          # Database configuration
 │   │   ├── middleware/      # Auth middleware
@@ -166,8 +168,6 @@ PFM/
 │   │   ├── App.jsx          # Main app component
 │   │   └── main.jsx         # Entry point
 │   └── package.json
-├── database/
-│   └── migrations/          # SQL migrations
 └── README.md
 ```
 
