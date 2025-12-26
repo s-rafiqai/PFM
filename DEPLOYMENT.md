@@ -35,6 +35,7 @@ Railway provides simple deployment for both frontend and backend with PostgreSQL
 5. **Set environment variables**
    ```bash
    railway variables set JWT_SECRET=your-production-secret-key
+   railway variables set NODE_ENV=production
    # DATABASE_URL is automatically set by Railway
    ```
 
@@ -109,6 +110,9 @@ PORT=3001
 DATABASE_URL=postgresql://user:password@host:port/database
 JWT_SECRET=your-very-secure-secret-key-change-this
 NODE_ENV=production
+
+# IMPORTANT: NODE_ENV=production enables SSL for database connections
+# This is required for Railway, Render, and most cloud PostgreSQL providers
 ```
 
 ### Frontend (.env.production)
