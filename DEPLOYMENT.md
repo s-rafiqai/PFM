@@ -38,10 +38,25 @@ Railway provides simple deployment for both frontend and backend with PostgreSQL
    # DATABASE_URL is automatically set by Railway
    ```
 
-6. **Deploy**
+6. **IMPORTANT: Configure Railway Settings**
+   - In Railway dashboard, go to your backend service
+   - Under "Settings" → "Deploy"
+   - Set **Root Directory** to `backend`
+   - Set **Build Command** to `npm install`
+   - Set **Start Command** to `node src/index.js`
+   - Do NOT set a migration command to run on startup
+
+7. **Deploy**
    ```bash
    railway up
    ```
+
+8. **Run migrations ONCE after first deployment**
+   ```bash
+   railway run npm run migrate
+   ```
+
+   **Note**: Only run migrations once. Do not configure Railway to run migrations on every deployment as this will cause errors.
 
 #### Frontend Deployment
 
