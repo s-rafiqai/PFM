@@ -34,7 +34,7 @@ Railway provides simple deployment for both frontend and backend with PostgreSQL
 
 5. **Set environment variables**
    ```bash
-   railway variables set JWT_SECRET=your-production-secret-key
+   railway variables set JWT_SECRET=Kh3Gcp3=ZH2hCf9&gKpG^1T|}{D;[_hM9DIk-1-1R
    # DATABASE_URL is automatically set by Railway
    ```
 
